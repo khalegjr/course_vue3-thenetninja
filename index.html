@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3.2"></script>
+
+    <style>
+      body {
+        background: #eee;
+        max-width: 960px;
+        margin: 20px auto;
+      }
+
+      p,
+      h3,
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        list-style-type: none;
+        background: #fff;
+        margin: 20px auto;
+        padding: 10px 20px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      li.fav {
+        background: #ff9ed2;
+        color: white;
+      }
+
+      .box {
+        padding: 100px 0;
+        width: 400px;
+        text-align: center;
+        background: #ddd;
+        margin: 20px;
+        display: inline-block;
+      }
+    </style>
+    <title>Aprendendo Vue</title>
+  </head>
+  <body>
+    <h1>Hello, Vue :)</h1>
+
+    <div id="app">
+      <h2>Agora o template está na página html</h2>
+      <div v-if="showBooks">
+        <p>{{ title }} - {{ author }} - {{ age }}</p>
+        <p>O v-if tira completamente do DOM.</p>
+      </div>
+
+      <!-- Sem chamar um método externo -->
+      <button v-on:click="age++">Incrementa a idade</button>
+      <button v-on:click="age--">Decrementa a idade</button>
+
+      <!-- Invocando um método do componente -->
+      <div @click="changeTitle">Muda o título</div>
+
+      <!-- Invocando um método do componente passando parãmetro -->
+      <div @click="changeTitleWithParameter('Um título ai por parâmetro')">
+        Muda o título passando um parâmetro
+      </div>
+      <button @click="toogleShowBooks">
+        <span v-if="showBooks">Esconder Livros</span>
+        <span v-else>Mostrar Livros</span>
+      </button>
+
+      <div v-show="showBooks">
+        <p>Usando v-show</p>
+        <p>{{ title }} - {{ author }} - {{ age }}</p>
+        <p>O v-show é apenas por CSS display</p>
+      </div>
+
+      <!-- mouse events -->
+      <div class="box" @mouseover="handleEvent($event, 5)">
+        mouseover (enter)
+      </div>
+      <div class="box" @mouseleave="handleEvent">mouseleave</div>
+      <div class="box" @dblclick="handleEvent">double click</div>
+      <div class="box" @mousemove="handleMousemove">
+        position - {{ x }} {{ y }}
+      </div>
+
+      <div v-show="showBooks">
+        <p>Usando v-show</p>
+
+        <ul>
+          <li v-for="book in books" :class="{fav: book.isFav }">
+            <h3>{{ book.title }}</h3>
+            <p>{{ book.author }}</p>
+          </li>
+        </ul>
+
+        <p>Usando v-for</p>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
