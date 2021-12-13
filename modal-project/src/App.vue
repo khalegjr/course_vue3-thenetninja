@@ -6,7 +6,7 @@
     <Modal :header="header" :text="text" theme="sale" @close="toggleModal" />
     <!-- @close fica escutando o evento em Modal e ativa o toggleModal -->
   </div>
-  <button @click="toggleModal">show modal</button>
+  <button @click.alt="toggleModal">show modal (alt)</button>
 </template>
 
 <script>
