@@ -2,7 +2,11 @@
   <div class="backdrop" @click.self="closeModal">
     <!-- O .self diz que o click não é capturado nos children  -->
     <div class="modal" :class="{ sale: theme === 'sale' }">
-      <slot />
+      <slot>Default Content</slot>
+
+      <div class="actions">
+        <slot name="links" />
+      </div>
     </div>
   </div>
 </template>
@@ -48,6 +52,29 @@
   }
 
   .modal.sale h1 {
+    color: white;
+  }
+
+  .modal .actions {
+    text-align: center;
+    margin: 30px 0 10px 0;
+    color: #333;
+  }
+
+  .modal .actions a {
+    color: #333;
+    padding: 8px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    text-decoration: none;
+    margin: 10px;
+  }
+
+  .modal.sale .actions {
+    color: white;
+  }
+
+  .modal.sale .actions a {
     color: white;
   }
 </style>

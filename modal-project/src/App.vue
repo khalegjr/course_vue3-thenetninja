@@ -3,7 +3,12 @@
   <p>Welcome...</p>
 
   <div v-if="showModal">
-    <Modal theme="sale" @close="toggleModal">
+    <Modal theme="" @close="toggleModal">
+      <!-- Um slot nomeado pode ser chamado em qualquer lugar -->
+      <template v-slot:links>
+        <a href="#">sign up now</a>
+        <a href="#">more info</a>
+      </template>
       <h1>Header of the Modal</h1>
       <p>Grab your ninja swag for half price!</p>
     </Modal>
