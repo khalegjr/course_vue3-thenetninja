@@ -2,7 +2,11 @@
   <h1>{{ title }}</h1>
   <input type="text" ref="name" />
   <button @click="handleClick">click me</button>
-  <Modal :header="header" :text="text" theme="sale" />
+  <div v-if="showModal">
+    <Modal :header="header" :text="text" theme="sale" @close="toggleModal" />
+    <!-- @close fica escutando o evento em Modal e ativa o toggleModal -->
+  </div>
+  <button @click="toggleModal">show modal</button>
 </template>
 
 <script>
@@ -17,12 +21,17 @@
         title: "My First Vue App :)",
         header: "Header of the Modal",
         text: "Grab your ninja swag for half price!",
+        showModal: false,
       };
     },
     methods: {
       handleClick() {
         console.log(this.$refs.name);
         this.$refs.name.focus();
+      },
+
+      toggleModal() {
+        this.showModal = !this.showModal;
       },
     },
   };
