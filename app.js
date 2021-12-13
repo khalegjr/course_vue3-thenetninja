@@ -38,6 +38,10 @@ const app = Vue.createApp({
       this.y = e.offsetY;
       //   console.log(this.x, this.y);
     },
+
+    toogleFav(book) {
+      book.isFav = !book.isFav;
+    },
   },
 });
 
