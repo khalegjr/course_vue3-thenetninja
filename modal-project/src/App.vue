@@ -2,7 +2,7 @@
   <h1>{{ title }}</h1>
   <p>Welcome...</p>
 
-  <div v-if="showModal">
+  <teleport to="#modals" v-if="showModal">
     <Modal theme="sale" @close="toggleModal">
       <!-- Um slot nomeado pode ser chamado em qualquer lugar -->
       <template v-slot:links>
@@ -13,7 +13,7 @@
       <p>Grab your ninja swag for half price!</p>
     </Modal>
     <!-- @close fica escutando o evento em Modal e ativa o toggleModal -->
-  </div>
+  </teleport>
 
   <div v-if="showModal2">
     <Modal theme="challenge" @close="toggleModalChallenge">
@@ -55,7 +55,8 @@
 </script>
 
 <style>
-  #app {
+  #app,
+  #modals {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
