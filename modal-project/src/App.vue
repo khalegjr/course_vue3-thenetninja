@@ -3,7 +3,10 @@
   <p>Welcome...</p>
 
   <div v-if="showModal">
-    <Modal :header="header" :text="text" theme="sale" @close="toggleModal" />
+    <Modal theme="sale" @close="toggleModal">
+      <h1>Header of the Modal</h1>
+      <p>Grab your ninja swag for half price!</p>
+    </Modal>
     <!-- @close fica escutando o evento em Modal e ativa o toggleModal -->
   </div>
 
@@ -20,8 +23,6 @@
     data() {
       return {
         title: "My First Vue App :)",
-        header: "Header of the Modal",
-        text: "Grab your ninja swag for half price!",
         showModal: false,
       };
     },
