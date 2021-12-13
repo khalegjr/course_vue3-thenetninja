@@ -1,11 +1,12 @@
 <template>
   <h1>{{ title }}</h1>
-  <input type="text" ref="name" />
-  <button @click="handleClick">click me</button>
+  <p>Welcome...</p>
+
   <div v-if="showModal">
     <Modal :header="header" :text="text" theme="sale" @close="toggleModal" />
     <!-- @close fica escutando o evento em Modal e ativa o toggleModal -->
   </div>
+
   <button @click.alt="toggleModal">show modal (alt)</button>
 </template>
 
@@ -25,11 +26,6 @@
       };
     },
     methods: {
-      handleClick() {
-        console.log(this.$refs.name);
-        this.$refs.name.focus();
-      },
-
       toggleModal() {
         this.showModal = !this.showModal;
       },
