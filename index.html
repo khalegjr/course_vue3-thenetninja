@@ -104,6 +104,19 @@
         </ul>
 
         <p>Usando v-for</p>
+        <p>Livros Favoritos</p>
+        <div>
+          <ul>
+            <li
+              v-for="book in filteredBooks"
+              :class="{fav: book.isFav }"
+              @click="toogleFav(book)"
+            >
+              <h3>{{ book.title }}</h3>
+              <p>{{ book.author }}</p>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
