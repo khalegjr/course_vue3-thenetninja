@@ -3,7 +3,7 @@
   <p>Welcome...</p>
 
   <div v-if="showModal">
-    <Modal theme="" @close="toggleModal">
+    <Modal theme="sale" @close="toggleModal">
       <!-- Um slot nomeado pode ser chamado em qualquer lugar -->
       <template v-slot:links>
         <a href="#">sign up now</a>
@@ -15,7 +15,18 @@
     <!-- @close fica escutando o evento em Modal e ativa o toggleModal -->
   </div>
 
+  <div v-if="showModal2">
+    <Modal theme="challenge" @close="toggleModalChallenge">
+      <h2>Esse é um outro Model</h2>
+      <p>Com um outro tema, pedido para o challenge.</p>
+      <template v-slot:links>
+        <a href="https://github.com/khalegjr" target="_blank">GitHub </a>
+      </template>
+    </Modal>
+  </div>
+
   <button @click.alt="toggleModal">show modal (alt)</button>
+  <button @click="toggleModalChallenge">show modal 2</button>
 </template>
 
 <script>
@@ -29,11 +40,15 @@
       return {
         title: "My First Vue App :)",
         showModal: false,
+        showModal2: false,
       };
     },
     methods: {
       toggleModal() {
         this.showModal = !this.showModal;
+      },
+      toggleModalChallenge() {
+        this.showModal2 = !this.showModal2;
       },
     },
   };

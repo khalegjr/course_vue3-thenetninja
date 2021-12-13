@@ -1,7 +1,10 @@
 <template>
   <div class="backdrop" @click.self="closeModal">
     <!-- O .self diz que o click não é capturado nos children  -->
-    <div class="modal" :class="{ sale: theme === 'sale' }">
+    <div
+      class="modal"
+      :class="{ sale: theme === 'sale', challenge: theme === 'challenge' }"
+    >
       <slot>Default Content</slot>
 
       <div class="actions">
@@ -75,6 +78,11 @@
   }
 
   .modal.sale .actions a {
+    color: white;
+  }
+
+  .modal.challenge {
+    background: rgb(0, 0, 55);
     color: white;
   }
 </style>
