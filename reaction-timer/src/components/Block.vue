@@ -1,5 +1,5 @@
 <template>
-  <div class="block" v-if="showBlock">click me</div>
+  <div class="block" v-if="showBlock" @click="stopTImer">click me</div>
 </template>
 
 <script>
@@ -9,26 +9,28 @@
     data() {
       return {
         showBlock: false,
+        timer: null,
+        reactionTime: 0,
       };
     },
 
     mounted() {
-      // quando o componente é montado no DOM
-      console.log("component mounted");
       setTimeout(() => {
         this.showBlock = true;
-        console.log(this.delay);
+        this.startTimer();
       }, this.delay);
     },
 
-    updated() {
-      // quando o componente é atualizado no DOM
-      console.log("component updated");
-    },
-
-    unmounted() {
-      // quando o componente é desmontado do DOM
-      console.log("component unmounted");
+    methods: {
+      startTimer() {
+        this.timer = setInterval(() => {
+          this.reactionTime += 10;
+        }, 10);
+      },
+      stopTImer() {
+        clearInterval(this.timer);
+        console.log(this.reactionTime);
+      },
     },
   };
 </script>
