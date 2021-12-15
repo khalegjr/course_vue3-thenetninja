@@ -29,7 +29,7 @@
       },
       stopTImer() {
         clearInterval(this.timer);
-        console.log(this.reactionTime);
+        this.$emit("end", this.reactionTime);
       },
     },
   };
