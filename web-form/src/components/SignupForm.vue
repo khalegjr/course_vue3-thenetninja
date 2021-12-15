@@ -23,11 +23,6 @@
       <label>Accept terms and conditions</label>
     </div>
   </form>
-
-  <p>Email: {{ email }}</p>
-  <p>Password: {{ password }}</p>
-  <p>Role: {{ role }}</p>
-  <p>Terms accepted: {{ terms }}</p>
 </template>
 
 <script>
@@ -50,12 +45,6 @@
 
           if (!this.skills.includes(skill)) {
             this.skills.push(skill);
-            console.log(this.tempSkill);
-            console.log(this.tempSkill.slice(0, -1), "com slice");
-            console.log(this.tempSkill.trim(), "com trim");
-            console.log(this.tempSkill.slice(0, -1).trim(), "com slice e trim");
-            console.log(skill);
-            console.log(this.skills);
           }
           this.tempSkill = "";
         }
