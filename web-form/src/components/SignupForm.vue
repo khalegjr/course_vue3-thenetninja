@@ -45,7 +45,7 @@
         if (e.key === "," && this.tempSkill) {
           let skill = this.tempSkill.slice(0, -1).trim();
 
-          if (!this.skills.includes(skill)) {
+          if (!this.skills.includes(skill) && skill != "") {
             this.skills.push(skill);
           }
           this.tempSkill = "";
